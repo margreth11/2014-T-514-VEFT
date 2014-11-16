@@ -189,6 +189,19 @@ Er hægt að láta einingapróf kasta villu
 Hvað gerir NBuilder fyrir okkur
 * Auðveldar okkur að búa til test gagnaklasa og gögn í þá, sérstaklega ef við þurfum af einhverjum ástæðum að generate mikið af gögnum
 
+##Globalization and Localization in ASP.NET
+Hvað gengur þetta út á
+* Þetta gengur út á að skrifa application sem styður mörg tungumál og birtingu gagna eins og dagsetningar, tíma ofl.
+
+Hvaða cluture value styður Asp.Net
+* Culture og UICulture, gildin í þessu ákvarða hvernig result lítur út úr föllum sem eru háð culture, svo sem dagsetningar, tími, tölur og mynt.  Allir þræðir í .net hafa CurrentCulture og CurrentUICulture object og ASP.NET skoðar þessa klasa þegar síður eru renderaðar
+* Culture er skilgreint með og án region, t.d. en-US er enskt svæði og bandarísk enska. 
+* Í hverri HTTP request er header field sem heitir Accept-Language sem segir til um hvaða tungumál browserinn skilur, Accept-Language: en-us,en;q=0.5 þýðir að browserinn vilji Ensku(United states) en getur tekið við öðrum tegundum af ensku. 
+
+Hvernig má gera Web Apa þannig úr garði að hann styðji við mörg tungumál 
+* 
+
+
 
 
 
