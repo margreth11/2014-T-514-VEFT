@@ -146,6 +146,7 @@ Hvernig join-ar maður tvær töflur í linq
 Hvenær er sniðugt að nota extension methods?
 * Þegar það þarf að select oft sömu fyrirspurn, eins og t.d. eftir id í eina töflu, public static TeacherDTO GetTeacherByID(this IRepository<Teacher> repo, int id ) {select ,,,,  return result.ToList()}
 
+##Entity
 Hvaða tengsl eru í boði í entity-um
 * one to one
 * one to many
@@ -164,6 +165,31 @@ Hvað gerir AutoMapper
 * Hann sér um að mappa klösum, þ.e. mappa Entity klösum í Dto og vice versa
 
 Hvað er Fluent API og hvað gerir það
-* Þetta gerir okkur kleyft að mappa töflum í gagnagrunni yfir í entity klasa og breyta nöfnum á bæði töflunni og dálkum. Þetta er gott í þeim tilfellum þar sem við erum kannski með legacy grunn með nafnagiftum sem ekki passa við það sem við viljum hafa í dg. 
+* Þetta gerir okkur kleyft að mappa töflum í gagnagrunni yfir í entity klasa og breyta nöfnum á bæði töflunni og dálkum. Þetta er gott í þeim tilfellum þar sem við erum kannski með legacy grunn með nafnagiftum sem ekki passa við það sem við viljum hafa í dag. 
+
+##Unit Tests
+Hvaða kóða á fyrst og fremst að einingaprófa 
+* Það á fyrst og fremst að testa buisness lógík, mikilvægasti kóðin til að testa
+
+Hvernig er best að setja upp einingapróf í verkefnum og lýsið hvernig að að gera það
+* Það er best að hafa sér project fyrir einingaprófin
+* Test klasar verða að vera public og hafa [TestClass] á undan klasa-skilgreiningu og [TestMethod] fyrir ofan öll testföll
+* Test föll eiga að vera void og ekki taka inn neina parametra
+* Hægt er að hafa [TestInitialize] fall sem er keyrt áður en öll test föllin eru keyrð
+
+Hvaða 3 skref eiga að vera í öllum einingaprófanaföllum
+* Arrange - býr til eintak af kerfinu sem á að desta, declera og frumstilla breytur, builda test gögn/klasa og bæta við MockUnitOfWork
+* Act - yfirleitt bara ein lína, hér er kóðin (fallið) keyrt sem á að testa  
+* Assert - hér er testað hvort niðurstöður eru eins og við var búist 
+
+Er hægt að láta einingapróf kasta villu
+* Já það er gert með því að bæta við [ExpectedException(typeof(AppObjectNotFoundException))] fyrir ofan fallið sem er verið að testa, þá gerir Test frameworkið ráð fyrir að þetta test skili þessar villu og ef það gerir það ekki þá failar testið
+* Einnig er hægt að nota ExpectedExceptionWithMessage og þá er líka tékkað á villuskilaboðum hvort þau innihaldi ákv. skilaboð
+
+Hvað gerir NBuilder fyrir okkur
+* Auðveldar okkur að búa til test gagnaklasa og gögn í þá, sérstaklega ef við þurfum af einhverjum ástæðum að generate mikið af gögnum
+
+
+
 
 
