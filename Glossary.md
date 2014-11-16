@@ -238,7 +238,12 @@ Hvernig má höndla þessar villur sem ExceptionFilter grípur ekki
 * Það má búa til klasa sem erfir frá ExceptionLogger sem útæfrir IExceptionLogger og yfirskrifa föll þar 
 * Síðan þarf bara að bæta þessu við í global config fyrir Web-Apan, config.Services.Add(typeof(IExceptionLogger), new TraceExceptionLogger());
 * Það má vera með fleiri en einn svona logger
-* Einnig er hægt að vera með ExceptionHandler og replace-a í config default ExceptionHandlerinn, en það má bara vera með einn þannig
+
+Hvernig má höndla villur sem ekki eru gripnar af ExceptionFilter
+* Það má búa til klasa sem erfir fr ExceptionHandler og replace-a í config default ExceptionHandlerinn
+* Síðan má yfirskrifa Handler fallið og grípa villuna þar og parsa hana, smíða svo skiljanleg villuboð að skila til clients, public override void Handle(ExceptionHandlerContext context)
+* Þennan handler þarf að virkja í global config, config.Services.Replace(typeof(IExceptionHandler), new CourseAPIExceptionHandler());
+* Ath það má bara vera með einn svona handler pr. forrit
 
 
 
