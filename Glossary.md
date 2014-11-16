@@ -209,7 +209,13 @@ Hvernig má gera Web-Apa þannig úr garði að hann styðji við mörg tungumá
 
 Hvað er data annotation og Model state
 * Í Asp.Net er hægt að nota attribute frá System.ComponentModel.DataAnnotations til að validatea Model klasa, það er gert með við því að bæta við [Required(ErrorMessage = "Það vantar að velja ....")]
-* í Controller klasanum er svo hægt að tékka á því hvort ModelState.IsValid sé true, og ef ekki skila þá bad request með villuskilaboðum
+* Í Controller klösum er svo hægt að tékka á því hvort ModelState.IsValid sé true, og ef ekki skila þá bad request með villuskilaboðum, ath það skilast ekki sjálfraka villa þó validation klikki það verður að forrita það
+
+Hvernig má meðhöndla villur sem koma m.a. frá Model state eða af öðrum ástæðum
+* Það má búa til klasa sem erfir ExceptionFilterAttribute eða ActionFilterAttribute, þennan klasa er svo hægt að setja inn í WebApiConfig klasan í Register fallið og þá virkar hann fyrir alla controllera, config.Filters.Add(..
+* Síðan má setja þetta attribute fyrir ofan controller föll: [AddExceptionFilter] og þá virkar filterinn bara á það tiltekna fall, og þá er líka sleppt að bæta exception klasanum við Web-Api config
+
+
 
 
 
