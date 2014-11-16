@@ -198,8 +198,19 @@ Hvaða cluture value styður Asp.Net
 * Culture er skilgreint með og án region, t.d. en-US er enskt svæði og bandarísk enska. 
 * Í hverri HTTP request er header field sem heitir Accept-Language sem segir til um hvaða tungumál browserinn skilur, Accept-Language: en-us,en;q=0.5 þýðir að browserinn vilji Ensku(United states) en getur tekið við öðrum tegundum af ensku. 
 
-Hvernig má gera Web Apa þannig úr garði að hann styðji við mörg tungumál 
-* 
+Hvernig má gera Web-Apa þannig úr garði að hann styðji við mörg tungumál 
+* Það þarf að bæta við LanguageMessageHandler í Web-Apa-projectið, þar þarf að tilgreina hvaða tungumál eru studd, gott að setja það bara í array. 
+* Síðan er lesið út request header þau tungumál sem browserinn styður
+* Síðan er current tread stilltur á það tungumál sem er beðið um að því gefnu að Web-Apin styði það, þ.e. bæði CurrentCulture og CurrentUICulture
+* Web-Apin þarf að vera með default localization þannig að ef hann styður ekki tungumál sem borwser biður um þá verður að nota það
+* Hægt er að hafa þýðingar á strengjum í resourece skrá sem Web-Apin getur svo sótt úr eftir tungumálum, ein skrá pr. tungumál
+* Í view model klasana er svo hægt að bæta við [Required(ErrorMessageResourceType = typeof(Resources.Resources), AllowEmptyStrings = false, ErrorMessageResourceName = "NameRequired")], hér eru þá villuskilaboð sótt eftir tungumáli browser og birt ef þetta property er ekki útfyllt. 
+* Magar vefsíður leyfa notanda að velja tungumál, þ.e. yfirskrifa það sem browserinn styður, það er yfirleitt gert með því að setja valið tungumál í köku
+
+
+
+
+
 
 
 
