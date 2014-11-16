@@ -227,6 +227,12 @@ Hvernig má kasta HTTP villum með ákv. error kóða
 * Það er hægt að nota: throw new HttpResponseException(HttpStatusCode.NotFound), og tilgreina þar villukóða sem á að kasta, 
 * Það er einnig hægt að smíða bara HttpError frá grunni, HttpError error = new HttpError(); error.Add(...
 
+Hvað villur ná ExceptionFilters ekki að höndla 
+* Exceptions sem koma frá smiðum controllera
+* Exceptions sem koma fra message handlers
+* Exceptions sem koma v. routing
+* Exceptions sem koma þegar það er verið að serializa response content 
+
 
 
 
