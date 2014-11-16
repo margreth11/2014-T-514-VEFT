@@ -214,6 +214,7 @@ Hvað er data annotation og Model state
 Hvernig má meðhöndla villur sem koma m.a. frá Model state eða af öðrum ástæðum
 * Það má búa til klasa sem erfir ExceptionFilterAttribute eða ActionFilterAttribute, þennan klasa er svo hægt að setja inn í WebApiConfig klasan í Register fallið og þá virkar hann fyrir alla controllera, config.Filters.Add(..
 * Síðan má setja þetta attribute fyrir ofan controller föll: [AddExceptionFilter] og þá virkar filterinn bara á það tiltekna fall, og þá er líka sleppt að bæta exception klasanum við Web-Api config
+* ATH það má bara vera með einn
 
 Hvaða 3 leiðir eru í boði til að tengja ExceptionFilter inn í WebApi
 * By action, fyrir ofan controller föll: [AddExceptionFilter] 
@@ -236,6 +237,10 @@ Hvað villur ná ExceptionFilters ekki að höndla
 Hvernig má höndla þessar villur sem ExceptionFilter grípur ekki
 * Það má búa til klasa sem erfir frá ExceptionLogger sem útæfrir IExceptionLogger og yfirskrifa föll þar 
 * Síðan þarf bara að bæta þessu við í global config fyrir Web-Apan, config.Services.Add(typeof(IExceptionLogger), new TraceExceptionLogger());
+* Það má vera með fleiri en einn svona logger
+* Einnig er hægt að vera með ExceptionHandler og replace-a í config default ExceptionHandlerinn, en það má bara vera með einn þannig
+
+
 
 
 
