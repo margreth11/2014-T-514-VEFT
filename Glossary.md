@@ -239,11 +239,28 @@ Hvernig má höndla þessar villur sem ExceptionFilter grípur ekki
 * Síðan þarf bara að bæta þessu við í global config fyrir Web-Apan, config.Services.Add(typeof(IExceptionLogger), new TraceExceptionLogger());
 * Það má vera með fleiri en einn svona logger
 
-Hvernig má höndla villur sem ekki eru gripnar af ExceptionFilter
+Hvernig má höndla villur sem ekki eru gripnar af ExceptionFilter (Global error handling) 
 * Það má búa til klasa sem erfir fr ExceptionHandler og replace-a í config default ExceptionHandlerinn
 * Síðan má yfirskrifa Handler fallið og grípa villuna þar og parsa hana, smíða svo skiljanleg villuboð að skila til clients, public override void Handle(ExceptionHandlerContext context)
 * Þennan handler þarf að virkja í global config, config.Services.Replace(typeof(IExceptionHandler), new CourseAPIExceptionHandler());
 * Ath það má bara vera með einn svona handler pr. forrit
+
+Hvernig er best að bæta við tracing í Web-Api
+* Það þarf að installa Microsoft.AspNet.WebApi.Tracing
+* Síðan þarf að setja þetta í Global config, SystemDiagnosticsTraceWriter traceWriter = config.EnableSystemDiagnosticsTracing();
+* Til að stilla trace level má setja, traceWriter.IsVerbose = true; og fá villu detail, og svo má stilla trace level,    traceWriter.MinimumLevel = TraceLevel.Debug; þetta er gert í global config
+* Síðan þarf að kalla í tracing í þeim föllum sem á að trace, Configuration.Services.GetTraceWriter().Info(Request, "Get", "Get the list of LanguageViewModel.");
+
+Hvernig má búa til custom trace writer
+* Það þarf að útfæra klasa sem útfærir ITraceWriter.   
+* Með því að gera þetta sjálfur má ma. skrifa trace result í skrá
+* Í global config þarf að replace default tracer, config.Services.Replace(typeof(ITraceWriter), new CourseAPITracer());
+* ATH það er bara hægt að hafa einn trace writer virkan í einu Web-Api forriti
+
+
+
+
+
 
 
 
