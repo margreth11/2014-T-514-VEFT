@@ -215,7 +215,17 @@ Hvernig má meðhöndla villur sem koma m.a. frá Model state eða af öðrum á
 * Það má búa til klasa sem erfir ExceptionFilterAttribute eða ActionFilterAttribute, þennan klasa er svo hægt að setja inn í WebApiConfig klasan í Register fallið og þá virkar hann fyrir alla controllera, config.Filters.Add(..
 * Síðan má setja þetta attribute fyrir ofan controller föll: [AddExceptionFilter] og þá virkar filterinn bara á það tiltekna fall, og þá er líka sleppt að bæta exception klasanum við Web-Api config
 
+Hvaða 3 leiðir eru í boði til að tengja ExceptionFilter inn í WebApi
+* By action, fyrir ofan controller föll: [AddExceptionFilter] 
+* By controller, fyrir ofan controller klasa: [AddExceptionFilter]
+* Globally, bæta við í Web-Api config
 
+Hvernig má kasta villum á mismunandi tungumálum
+* Það er einmitt gert með því að útfæra klasa sem erfir frá ExceptionFilterAttribute, sá klasi overridar OnException fallið, tekur við villuskilaboðum og parsar þau, flettir svo upp í resorce skrá eftir réttum villuboðum og endurkastar villunni
+
+Hvernig má kasta HTTP villum með ákv. error kóða
+* Það er hægt að nota: throw new HttpResponseException(HttpStatusCode.NotFound), og tilgreina þar villukóða sem á að kasta, 
+* Það er einnig hægt að smíða bara HttpError frá grunni, HttpError error = new HttpError(); error.Add(...
 
 
 
