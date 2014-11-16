@@ -233,7 +233,9 @@ Hvað villur ná ExceptionFilters ekki að höndla
 * Exceptions sem koma v. routing
 * Exceptions sem koma þegar það er verið að serializa response content 
 
-
+Hvernig má höndla þessar villur sem ExceptionFilter grípur ekki
+* Það má búa til klasa sem erfir frá ExceptionLogger sem útæfrir IExceptionLogger og yfirskrifa föll þar 
+* Síðan þarf bara að bæta þessu við í global config fyrir Web-Apan, config.Services.Add(typeof(IExceptionLogger), new TraceExceptionLogger());
 
 
 
