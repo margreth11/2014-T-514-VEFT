@@ -199,7 +199,7 @@ Hvaða cluture value styður Asp.Net
 * Í hverri HTTP request er header field sem heitir Accept-Language sem segir til um hvaða tungumál browserinn skilur, Accept-Language: en-us,en;q=0.5 þýðir að browserinn vilji Ensku(United states) en getur tekið við öðrum tegundum af ensku. 
 
 Hvernig má gera Web-Apa þannig úr garði að hann styðji við mörg tungumál 
-* Það þarf að bæta við LanguageMessageHandler í Web-Apa-projectið, þar þarf að tilgreina hvaða tungumál eru studd, gott að setja það bara í array. 
+* Það þarf að bæta við LanguageMessageHandler í Web-Apa-projectið, þar þarf að tilgreina hvaða tungumál eru studd, gott að setja það bara í array. Síðan er þessum handler bætt við gobal configið fyrir Web-Apan
 * Síðan er lesið út request header þau tungumál sem browserinn styður
 * Síðan er current tread stilltur á það tungumál sem er beðið um að því gefnu að Web-Apin styði það, þ.e. bæði CurrentCulture og CurrentUICulture
 * Web-Apin þarf að vera með default localization þannig að ef hann styður ekki tungumál sem borwser biður um þá verður að nota það
@@ -207,6 +207,9 @@ Hvernig má gera Web-Apa þannig úr garði að hann styðji við mörg tungumá
 * Í view model klasana er svo hægt að bæta við [Required(ErrorMessageResourceType = typeof(Resources.Resources), AllowEmptyStrings = false, ErrorMessageResourceName = "NameRequired")], hér eru þá villuskilaboð sótt eftir tungumáli browser og birt ef þetta property er ekki útfyllt. 
 * Magar vefsíður leyfa notanda að velja tungumál, þ.e. yfirskrifa það sem browserinn styður, það er yfirleitt gert með því að setja valið tungumál í köku
 
+Hvað er data annotation og Model state
+* Í Asp.Net er hægt að nota attribute frá System.ComponentModel.DataAnnotations til að validatea Model klasa, það er gert með við því að bæta við [Required(ErrorMessage = "Það vantar að velja ....")]
+* í Controller klasanum er svo hægt að tékka á því hvort ModelState.IsValid sé true, og ef ekki skila þá bad request með villuskilaboðum
 
 
 
