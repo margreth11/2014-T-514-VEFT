@@ -395,6 +395,21 @@ Hvað er Node.js?
 Ef Node.js er single threaded hvernig höndlar það þá margar fyrirspurnir ?
 * The first client connects and asks for data from the database. Nodejs sends a request to the database and while it waits for the response from the database it handles other clients requests. When the database is finished getting the data and sends the response back to nodejs. Nodejs gets an interrupt signal, receives the data and gives it to the first client that connected and was asking for this data.
 
+Hvað er MongoDB?
+* NpSql database, gögn eru geymd í skrám (document based db)
+* Gögn eru geymd í collection, gögn eru geymd á JSON like formati, e.g. binary json string kallað BISON.
+* Forritarar eru ekki bundnir af því að geyma eins BISON object í sama collection, þar af leiðandi geta gögn í einu collection oft orðið ansi sundurleit
+* Kosturinn er sá að BISON er mjög líkt JSON svo gögn eru geymd svo gott sem á sama formati og þeim er skilað í client
+* Data integrity er ekki mikið þar sem engin tengsl eru á milli collection-a og í höndum forritara að tryggj að gögn séu í lagi
+* Endurtekning á sömu gögnum getur komið oft fyrir þar sem erfitt er að tékka sig af hvort það er búið að vista þau
+* MongoDB er mjög hraðvirkur þegar kemur að því að leita og vista og getur í sumum tilfellum verið margfalt hraðari en hefðbundin database
+* MongoDB styður Indexa og er hægt að indexa collection á ákv. field
+* MongoDB úthlutar einnig Id á colleciton er það field sett sjálfkrafa inn með öllum gögnum sem eru skráð
+* MongoDB leyfir ekki að sama id í collection sé vistað tvisvar
+* 
 
+Hvað er Sharding í MongoDB
+* Það er leið til að geyma gögn á mörgum serverum
+* Í MongoDB er mjög auðvelt að geyma gögn dreift, 
 
 
