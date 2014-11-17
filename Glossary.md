@@ -279,14 +279,14 @@ Lýsið hvernig notandi tengist með OpenId
 
 OpenId skilar upplýsingum um notenda í form token sem inniheldur scopes og claims þegar notandi er búin að auðkenni sig, það eru 3 megin aðferðir sem eru skilgreindar sem Flow til að gera þetta, lýsið þeim
 * Code Flow:
-** The client sends an authentication request to the OpenID provider.
-** The OpenID provider authenticates the user (on behalf of the client) and responds with an authorization code to the client.
-** The client requests an id token with the authorization code.
-** The client validates the token and retrives the user information.
+  * The client sends an authentication request to the OpenID provider.
+  * The OpenID provider authenticates the user (on behalf of the client) and responds with an authorization code to the client.
+  * The client requests an id token with the authorization code.
+  * The client validates the token and retrives the user information.
 * Implicit Fow:
-** The client sends an authentication request to the OpenID provider.
-** The OpenID provider authenticates the user (on behalf of the client) and redirects him/her to the client with an id token.
-** The client validates the token and retrieves the user information.
+  * The client sends an authentication request to the OpenID provider.
+  * The OpenID provider authenticates the user (on behalf of the client) and redirects him/her to the client with an id token.
+  * The client validates the token and retrieves the user information.
 * Hybrid Flow: This flow is basically a mix of the other two, which means that in some cases the authorization process is return to the client with a code and sometimes with an id token directly.
 
 
