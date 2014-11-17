@@ -257,6 +257,16 @@ Hvernig má búa til custom trace writer
 * Í global config þarf að replace default tracer, config.Services.Replace(typeof(ITraceWriter), new CourseAPITracer());
 * ATH það er bara hægt að hafa einn trace writer virkan í einu Web-Api forriti
 
+Hvað er OAuth
+* Open authorization, þessi protocol gerir notendum kleyft að gefa aðgengi að private upplýsingum um sig á einni vefsíðu til annarar vefsíðu án þess að deila usernafni og passwordi yfir á hina síðuna.  Það er ss. hægt að nota sama identity til að logga sig inn á margar síður.  Sbr. login with Facebook :)
+
+Hvaða breytingar eru í OAuth 1.0
+* Hér kemur til sögunar resource owner, þ.e. auðkenningar-þjónusta.   Clientin þarf því að biðja um aðgang að gögnum í gegnum þennan resource þjón, fær til baka token og matching shared-secret sem hann getur svo notað til að nálgast upplýsingar.  Markmiðið með þessu er að þurfa ekki að senda notenda-upplýsingar á clientin, hægt er að gefa út tóka sem hafa ákveðin gildistíma og takmarkaðar aðgangsheimildir 
+
+Hvaða kemur svo nýtt í OAuth 2.0
+* Þetta er víst gölluð útgáfa og ekki mælt með að nota hana
+
+
 
 
 
