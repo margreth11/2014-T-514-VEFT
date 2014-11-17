@@ -1,25 +1,30 @@
 ##Web services
 
 Hverjir eru kostirnir við vefþjónustur?
-* Þær eru cross platform, þ.e. það geta margar tengudir af clientum tengst þeim
-* Sá sem á gögnin getur exposað þeim og aðrir sem kunna eða finna sniðuga lausn til að nýta gögnin geta gert það.
-* Mass up consept, taka tvö eða fleiri API og sameina þau, búa til eitthvað sniðugt
+* Þær eru cross platform, þ.e. það geta margar tegundir af clientum tengst þeim
+* Margir aðilar geta nýtt sér gögnin ef Web-Apin leyfir það, jafnvel selt aðgang að gögnum 
+* Býður upp á möguleikan að nýta gögn frá fleiri ein einum Web-Apa og sameina þau, Mass upp consept
 * Allri buisness lógík þarf bara að viðhalda á einum stað
-* Clientin getur verið mjög léttur og þarf bara að rendera eitt HTML
-* API eða vefþjónustur get svo exposað gögnum og allir (margir) get nýtt sér það
+* Clientin getur verið mjög léttur og þarf bara að rendera HTML
 
 Hverjir geta verið ókostirnir við vefþjónustur?
-* Getur valdið því að þegar smá breytingar verða á html síðu að þá verði client að reloda henni að fullu frá þjónustunni
+* Getur valdið því að þegar smá breytingar verða á html síðu að þá verði client að endurhlaða henni að fullu frá þjónustunni
 * Ef clientin er ekki vefur þá getur hann þurft að parsa HTML-ið til að ná í gögnin, það býður villum heim þar sem HTML getur breyst og þá virkar kannski ekki parsing lengur. 
 
 Nefnið 3 algengar gerðir af vefþjónustum og lýsið arkitektúr þeirra stuttlega
 * REST (REpresentational State Transfer, Roy Fielding in 2000) þjónustur eru client/server, þær eru stateless, þær eru cachable, og hypertext driven.   
-* SOAP 
-* WCF
+* SOAP (Simple Object Access protocol)
+* WCF (Windows Communication Foundation)
+
+Hver eru einkenni REST þjónutu 
+* Client/Server
+* Stateless - serverinn á að halda utan um client state, state er sent með öllum requestum
+* Cacheable - auðlindir(resources) ákveða sjálfar hvort þær eru cachble og hve lengi
+* Hypertext driven (í hinum fullkomna heimi)
 
 Teljið upp nokkur HTTP verbs og hvaða tilgangi þau þjóna
 * GET (sækir gögn), POST (býr til nýja gögn), PATCH (uppfærir gögn, t.d. eitt svæði í töflu), PUT (uppfærir gögn í heild sinni), DELETE (eyðir eða setur delete flagg á true)
-* HTTP verb tilgreina hvaða aðgerð á að framkvæma
+* HTTP verb tilgreina hvaða aðgerð á að framkvæma þegar kallað er í Web-Apa
 
 Lýsið hefbundinni REST þjónustu í dag
 * REST er HTTP þjónusta, sækir gögn og skilar JSON, það er lang algengasta útfærsluaðferð á REST í dag.  En REST þjónusta skv. skilgreiningu þarf ekki að nota HTTP.  Með REST er fólk að uppgvöta hvernig HTTP á að virka, þar sem verbin eru notuð mikið í REST þjónustum. 
@@ -38,7 +43,7 @@ Hvernig á að byggja upp URL fyrir REST þjónustu ?
 * /api/courses/26892, sækir einn tiltekin áfanga
 * /api/courses/26892/students, sækir alla nemendur í tilteknum áfanga
 
-Hvernig er hægt að gera URL óhakkanleg (HATEOAS)
+Hvernig er hægt að gera URL óhakkanleg
 * Mögulega hægt að gera með ólæsanlegum URL-um
 * Eða apin muni bara exposa rótar-urlinu og síðan þyrfti að kalla í Apan til að komast að því hvað er hægt að gera, rótarkallið skilar því
 
@@ -48,6 +53,10 @@ Hvernig er hægt að skilgreina hversu mikið þjónusta er REST þjónusta
 * Level 2, búið að bæta við HTTP verb, Post, Get etc. 
 * Level 3, eitt rótar-url, notendur verða að kalla á þjónustuna til að komast að því hvað er hægt að gera, hér er möguleiki að hafa url sem er óhakkanleg (HATEOAS)
 * Flestar vefþjónustur eru á level 2 í dag
+
+Hvað er HATEOAS
+* REST þjónusta á level 3 sem exposar bara einu rótarurli sem hægt er að nálgast all í gegnum
+* Á þessu stili er janfvel hægt að hafa URL sem ekki er hægt að hakka 
 
 Hvernig er best að útgáfustýra API-um
 * Setja útgáfuna í urlið /api/v1/...  mikið notað
@@ -63,7 +72,8 @@ Hvað heitir nýja web apið sem Microsoft er að vinna að núna
 
 Hvernig er arkitektúr Web API 
 * Allir controller klasar verða að erfa frá ApiController 
-* ValuController sér um að mappa Urlin í kóðanum, ef föll í controllert byjra á Get, Put, Post er gengið út frá því að þau höndli þessi atburði, það er líka hægt að skilgreina með attribute fyrir ofan fallið hvaða verb það höndlar [HttpGet] etc
+* ValuController sér um að mappa Urlin í kóðanum, ef föll í controller byjra á Get, Put, Post er gengið út frá því að þau höndli þessi atburði, það er líka hægt að skilgreina með attribute fyrir ofan fallið hvaða verb það höndlar [HttpGet] etc
+* Annars á Soulutin að skiptast upp í Web-Apan sem inniheldur controllera og routing, Models sem inniheldur alla model og view klasa. Servises sem inniheldur alla buisness lógík og Entities sem inniheldur alla Entity klasa og tengingar við gagnagrunn.   Einnig er hægt að hafa Entities í sér projecti.
 
 Hvernig er það stillt hvort controller skili JSON eða XML t.d. 
 * Accept Http Hedar inniheldur Mime type sem segir til um þetta, application/json, applicatoin/xml
@@ -74,7 +84,6 @@ Hvað er CORS (Cross-Origin Resource Sharing)?
 * var cors = new EnableCorsAttribute("*", "*", "*");  --origin, header and methods 
 
 ##Routing
-
 Lýsið default routing í ASP.NET Web API
 * URL eiga að stemma við ControllerName/ActionName 
 
@@ -85,7 +94,7 @@ Hvernig má senda paramert í api call
 * Parametra má skilgreina í routing fyrir fall, [Route("grades/{id:int}")], síðan verður fallið sem hefur þessa routing skilgreiningu að taka inn parameter sem heitir nákvæmlega það sama
 
 Hvernig má bæta við query parameter í api call
-* það er gert með spurningamerki /api/v1/12345/grades?semester=20133, þá verður fallið að taka inn parameter sem hetiri semester og hann getur verið optional eða ekki
+* það er gert með spurningamerki /api/v1/12345/grades?semester=20133, þá verður fallið að taka inn parameter sem heitir semester og hann getur verið optional eða ekki
 
 Hvernig er best að senda model eða entity gögn þegar kallað er í Post, Put eða Patch 
 * Það er hægt að senda það með sem primative gildi í http header og verður þá að passa að merkja það með [From Body] attribute. 
@@ -119,7 +128,7 @@ Lýsið hvað repository gerir
 
 ##Dependency Injection
 Hvað er dependency injection
-* Það er að gefa objecti sínar instance breytur
+* Það er að rétta objecti sínar instance breytur
 * Þegar DI er notað þá er forritari neyddur til að nota Interface, Interface gera kóðan testanlegri þar sem auðveldara er að injecta dependencyum inn í hann 
 
 Hvaða 3 tegundir af dependency injection eru til?
@@ -154,7 +163,7 @@ Hvaða tengsl eru í boði í entity-um
 
 Hvernig er best að skilgreina tengsl í entity-um
 * Í entity klösum er hægt að vera með property sem geymir id á entity sem foreign lykill er í
-* Eða collection ef relation er many to many
+* Eða collection ef tengslin er many to many
 
 Hvaða loading options eru í boði fyrir tengd entity
 * Lazy loading.  Tengd entity eru sótt þegar það vantar gögn úr þeim.
@@ -165,7 +174,7 @@ Hvað gerir AutoMapper
 * Hann sér um að mappa klösum, þ.e. mappa Entity klösum í Dto og vice versa
 
 Hvað er Fluent API og hvað gerir það
-* Þetta gerir okkur kleyft að mappa töflum í gagnagrunni yfir í entity klasa og breyta nöfnum á bæði töflunni og dálkum. Þetta er gott í þeim tilfellum þar sem við erum kannski með legacy grunn með nafnagiftum sem ekki passa við það sem við viljum hafa í dag. 
+* Þetta gerir okkur kleyft að mappa töflum í gagnagrunni yfir í entity klasa og breyta nöfnum á bæði töflunni og dálkum. Þetta er gott í þeim tilfellum þar sem við erum kannski með legacy grunn með nafnagiftum sem ekki passa við það sem við viljum hafa í dag.  Gert með því að setja Attribute fyrir ofan klasaskilgreiningu á Entity klasa [TableName = "People"]
 
 ##Unit Tests
 Hvaða kóða á fyrst og fremst að einingaprófa 
@@ -178,7 +187,7 @@ Hvernig er best að setja upp einingapróf í verkefnum og lýsið hvernig að a
 * Hægt er að hafa [TestInitialize] fall sem er keyrt áður en öll test föllin eru keyrð
 
 Hvaða 3 skref eiga að vera í öllum einingaprófanaföllum
-* Arrange - býr til eintak af kerfinu sem á að desta, declera og frumstilla breytur, builda test gögn/klasa og bæta við MockUnitOfWork
+* Arrange - býr til eintak af kerfinu sem á að testa, declera og frumstilla breytur, builda test gögn/klasa og bæta við MockUnitOfWork
 * Act - yfirleitt bara ein lína, hér er kóðin (fallið) keyrt sem á að testa  
 * Assert - hér er testað hvort niðurstöður eru eins og við var búist 
 
@@ -240,7 +249,7 @@ Hvernig má höndla þessar villur sem ExceptionFilter grípur ekki
 * Það má vera með fleiri en einn svona logger
 
 Hvernig má höndla villur sem ekki eru gripnar af ExceptionFilter (Global error handling) 
-* Það má búa til klasa sem erfir fr ExceptionHandler og replace-a í config default ExceptionHandlerinn
+* Það má búa til klasa sem erfir frá ExceptionHandler og replace-a í config default ExceptionHandlerinn
 * Síðan má yfirskrifa Handler fallið og grípa villuna þar og parsa hana, smíða svo skiljanleg villuboð að skila til clients, public override void Handle(ExceptionHandlerContext context)
 * Þennan handler þarf að virkja í global config, config.Services.Replace(typeof(IExceptionHandler), new CourseAPIExceptionHandler());
 * Ath það má bara vera með einn svona handler pr. forrit
