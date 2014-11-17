@@ -308,15 +308,22 @@ Hvað er OData?
 Hvað er ETag og hvað gerir það
 * Þetta er einkvæmt auðkenni pr. url eða resource, ef urlið breytist þá þarf að gefa því nýtt ETag
 * ETag er notað þegar gögn eru geymd í minni (chace) á serverum til að flýta fyrirspurnum og einnig til að koma í veg fyrir að það þurfi að fara margoft í gagnagrunn til að sækja sömu gögn
-* Client fær ETag til baka með niðurstöðum úr fyrirspurn
+* Client fær ETag til baka með niðurstöðum úr fyrirspurn frá server 
 * Þegar Client gerir svo sömu fyrirspurn þá sendir hann ETagið með ásamt "If-None-Match" header, ef gögn eru til í chace þá fær hann þau ásamt http status kóða 304 HTTP response (Not modified), ath serverinn ber ETagið saman við síðustu fyrirspurn (url) frá client til að athuga hvort hún hafi eitthvað breyst. 
-* Þegar Client ætlar að uppfæra gögn þá sendir hann "If-Match" header með, og ef ETag matchar ekki við síðustu fyrirspurn þá skilar server 412 HTTP response (Precondition Failed)
+* Þegar Client ætlar að uppfæra gögn þá sendir hann "If-Match" header með, og ef ETag matchar ekki við nýjustu útgáfu af gögnum þá skilar server 412 HTTP response (Precondition Failed), þ.e í ETag-i er version númer á gögnum sem verið er að ná í
 * stundum eru ETags með prefix /w, það þýðir að það sé week og er bara geymt í minni á server 
 
 ##CacheCow
 Hvað gerir ChaceChow library 
 * Það útfærir caching bæði á client og server, notar message handlers og in-memory database til að halda utan um þetta
 * Til að bæta þessu við Web-Apa þá þarf að adda þessu í config fallið, var cacheCowCacheHandler = new CachingHandler(config); config.MessageHandlers.Add(cacheCowCacheHandler)
+
+##CacheOutput
+Hvað notar þetta library til að cacha gögn
+* Það nota attribute
+* Hægt að stilla ClientTimeSpan og ServerTimeSpan, sett fyrir ofan fall [ChacheOutput(ClientTimeSpan = 20, ServerTimeSpan = 30)]
+* Það eru fleiri property sem hægt er að stilla, MustRevalidate, ExcludeQueryStringFromCacheKey, AnonymousOnly
+* Notar líka ETags
 
 
 
