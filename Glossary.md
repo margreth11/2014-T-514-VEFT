@@ -257,6 +257,7 @@ Hvernig má búa til custom trace writer
 * Í global config þarf að replace default tracer, config.Services.Replace(typeof(ITraceWriter), new CourseAPITracer());
 * ATH það er bara hægt að hafa einn trace writer virkan í einu Web-Api forriti
 
+##Authentication
 Hvað er OAuth
 * Open authorization, þessi protocol gerir notendum kleyft að gefa aðgengi að private upplýsingum um sig á einni vefsíðu til annarar vefsíðu án þess að deila usernafni og passwordi yfir á hina síðuna.  Það er ss. hægt að nota sama identity til að logga sig inn á margar síður.  Sbr. login with Facebook :)
 
@@ -291,6 +292,20 @@ OpenId skilar upplýsingum um notenda í form token sem inniheldur scopes og cla
 
 Á hvaða formati eru Id token
 * JSON Web Token
+
+##OData
+Hvað er OData?
+* OData er protocol sem lýsir samræmdri aðferð fyrir REST þjónustur til að skila gögnum frá sér, einnig er hægt að breyta gögnum í gegnum þennan protocol
+* Það er hægt að gera fyrirspurnir á gögn, OD styður nokkur query options, dæmi:
+  * search, finnum "cool beer" http://.../odata/Products?$search="ee"  -- leitar að öllum strengum með "ee"
+  * filter, finnum öll verð sem eru minna en 10 http://.../odata/Products?$filter=Price lt 10.00
+  * count, http://.../odata/Products?$count=true virkar eins og sql fyrirspurn, grúppar og telur 
+  * select, selectar ákveðnar færslur, http://../odata/Products?$select=Price  -- hér er það "Price"
+  * svo er top, skip, expand (gefur tengdar færslur líka), format (fromatar outputið)
+  * svo má chaina þessum leitarskylirðum saman
+
+
+
 
 
 
