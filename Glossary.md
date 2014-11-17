@@ -266,8 +266,28 @@ Hvaða breytingar eru í OAuth 1.0
 Hvaða kemur svo nýtt í OAuth 2.0
 * Þetta er víst gölluð útgáfa og ekki mælt með að nota hana
 
+Hver er munurinn á OAuth og OpenId
+* OAuth skilgreinir access toka sem gefa aðgang að providerum, OpenId býr til identity toka sem eru bara til þess að auðkenna notedur og þessir tókar eru notaðir til að fá aðgang að clientum
+* OpenId byggir á OAuth 2.0 
 
+Lýsið hvernig notandi tengist með OpenId
+* The Client sends a request to the OpenID Provider.
+* The OpenID Provider authenticates the End-User and obtains authorization.
+* The OpenID Provider responds with an ID Token and usually an Access Token.
+* The Client can send a request with the Access Token to the UserInfo Endpoint.
+* The UserInfo Endpoint returns Claims about the End-User.
 
+OpenId skilar upplýsingum um notenda í form token sem inniheldur scopes og claims þegar notandi er búin að auðkenni sig, það eru 3 megin aðferðir sem eru skilgreindar sem Flow til að gera þetta, lýsið þeim
+* Code Flow:
+** The client sends an authentication request to the OpenID provider.
+** The OpenID provider authenticates the user (on behalf of the client) and responds with an authorization code to the client.
+** The client requests an id token with the authorization code.
+** The client validates the token and retrives the user information.
+* Implicit Fow:
+** The client sends an authentication request to the OpenID provider.
+** The OpenID provider authenticates the user (on behalf of the client) and redirects him/her to the client with an id token.
+** The client validates the token and retrieves the user information.
+* Hybrid Flow: This flow is basically a mix of the other two, which means that in some cases the authorization process is return to the client with a code and sometimes with an id token directly.
 
 
 
