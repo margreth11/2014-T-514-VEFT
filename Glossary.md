@@ -380,18 +380,20 @@ Hvernig skrifar maður Flask Restful service, hvernig er uppbyggingin?
 * templates - mappa sem geymir öll html skjöl
 
 Hvað er Memcached ?
-* Er caching kerfi sem er hægt að nota fyrir flestar applicationir sem þurfa að geyma gögnin í database
-* Memchace er þá notað til geyma gögn í minni til að forðast það að þrufa að fara í gagnagrunn og þar með hraða fyrirspurnum margfalt
-* Memcache er með risa stóra hash töflu sem hægt er að dreifa á margar vélar, þegar hash taflan er full þá er eldri gögnum ýtt á annað minnissvæði LRU, least recently used.  Forrit sem nota þessa lausn bæta við gögnum og fyrirspurnum í RAM áður en það er farið í gagnagrunn. 
+* Er caching kerfi sem er hægt að nota fyrir flest forrit sem þurfa að geyma og sækja gögn í database
+* Memchace er þá notað til geyma gögn í minni til að forðast það að þurfa að fara í gagnagrunn og þar með hraða fyrirspurnum margfalt
+* Memcache er með risa stóra hash töflu sem hægt er að dreifa á margar vélar, þegar hash taflan er full þá er eldri gögnum ýtt á annað minnissvæði LRU, least recently used.  Forrit sem nota þessa lausn bæta við gögnum og fyrirspurnum í RAM áður en það er skráð í gagnagrunn. 
 * Oft er stræð hash töflunar mikil, og getur memchace grunnur farið í mörg GB, Memchace er jafn góð lausn þar sem fyrirspurnatíðni er há eða kostnaður við að sækja gögn er mikill (tími)
 
+Hvað er Node.js?
+* Þetta er open source, cross-platform umhverfi fyrir service forrit og vef þjóna.    Node.js er skrifað í JavaScript, og er keyrt með Node.js runtime.  
+* Node.js is single threaded and asynchronous
+* Node.js forrit munu alltaf keyra án þess að stoppa, jafnvel þó að TimeOutFunction sé implementuð, þá keyrir kóðin á eftir henni fyrst en umhverfið býr bara til task úr TimeOutFunction og stilla biðtíma, eftir bíðtíman fær forritið interrupt og keyrir þetta fall.  Ástæðan fyrir þessu er sú að Node.js er single threaded. 
+* Node.js byggir á V8 virtual vél Google.  Java script keyrir alltaf í umhverfi node.js keyrir server side. 
+* Node.js leggur áhersu á network forritun
 
-
-
-
-
-
-
+Ef Node.js er single threaded hvernig höndlar það þá margar fyrirspurnir ?
+* The first client connects and asks for data from the database. Nodejs sends a request to the database and while it waits for the response from the database it handles other clients requests. When the database is finished getting the data and sends the response back to nodejs. Nodejs gets an interrupt signal, receives the data and gives it to the first client that connected and was asking for this data.
 
 
 
