@@ -334,6 +334,33 @@ Hvað notar þetta library til að cacha gögn
 * Það eru fleiri property sem hægt er að stilla, MustRevalidate, ExcludeQueryStringFromCacheKey, AnonymousOnly
 * Notar líka ETags
 
+##Vefþjónustur af hverju?
+* Leyfa öðrum forriturum að nálgast gögn frá okkur
+* Aðskilur betur bakenda og framenda á veflausnum
+* Vefþjónustur er hægt að skrifa á mismuanndi1 forritunarmálum, en front endin breytist ekki við það getur verið í allt öðru umhverfi
+* Aðrir forritara gætu fundið leiðir til að sýna gögnin á nýjan og spennandi hátt
+
+##Python og bakendaforritun
+Af hverju er bakendin svona mikilvægur
+* Hann er jú hjartað í lausninni
+* Bakendi þarf að vera skilvirkur, Öruggur, Skalanlegur, Vel aðgengilegur, Viðhaldanlegur, Rekstrarlega hagkvæmur og Kostnaður í lágmarki
+* Það þarf að hanna kerfið þannig frá upphafi svo hægt sé að stækka það
+* Flest tólin sem við notum eru skalanleg og geta orðið að klusterum
+
+Hvað er virtualenv í Linux og Mac?
+* Virtualenv er tól sem gerir okkur kleyft að setja upp alls kona pakka og dót í ákveðna möppu fyrir lausn sem við erum að forrita án þess að menga stýrikerfið okkar af þessu dóti, þ.e. pökkum er installað locally í ákv. folder en ekki globaly á stýrikerfinu.   Virtualenv sér svo um að loda þessum pökkum fyrir okkur þegar við virkjum það, source ./venv/bin/activate
+
+Hvað er PIP?
+* Það er tók sem við getum notað sem downloda og installar Python pökkum
+* pip Freeze > requierments.txt, skrifar dependency's í skrá sem svo er hægt að nota til að installa forritinu seinna meir
+* pip install -r requierments.txt, setur upp allt sem er í þessari skrá
+
+Hvað er Flask
+* Það er lightweight web framework fyrir Python, 
+* Flask er svokallað micro framework, góður kjarni, routing, meðhöndlun á HTTP protocol, og auðvelt að bæta við extensionum
+* Í Flask er engin stuðningur við database, eða form validation, hins vegar er hægt að bæta þessu við með því að installa add-inum
+* Í fyrstu var þetta aprílgabb frá einum gæja, en það tóku það margir vel í þetta að þetta varð að veruleika
+* Flask byggir á Werkzeug (HTTP og WSGI library fyrir Python) og Jinja1 (Template framework fyrir Python) 
 
 
 
