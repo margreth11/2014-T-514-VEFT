@@ -348,7 +348,7 @@ Af hverju er bakendin svona mikilvægur
 * Flest tólin sem við notum eru skalanleg og geta orðið að klusterum
 
 Hvað er virtualenv í Linux og Mac?
-* Virtualenv er tól sem gerir okkur kleyft að setja upp alls kona pakka og dót í ákveðna möppu fyrir lausn sem við erum að forrita án þess að menga stýrikerfið okkar af þessu dóti, þ.e. pökkum er installað locally í ákv. folder en ekki globaly á stýrikerfinu.   Virtualenv sér svo um að loda þessum pökkum fyrir okkur þegar við virkjum það, source ./venv/bin/activate
+* Virtualenv er tól sem gerir okkur kleyft að setja upp alls kona pakka og dót í sýndar umhverfi(möppu) fyrir lausn sem við erum að forrita án þess að menga stýrikerfið okkar af þessu dóti, þ.e. pökkum er installað locally í ákv. folder en ekki globaly á stýrikerfinu.   Virtualenv sér svo um að loda þessum pökkum fyrir okkur þegar við virkjum það, source ./venv/bin/activate
 
 Hvað er PIP?
 * Það er tók sem við getum notað sem downloda og installar Python pökkum
@@ -362,7 +362,28 @@ Hvað er Flask
 * Í fyrstu var þetta aprílgabb frá einum gæja, en það tóku það margir vel í þetta að þetta varð að veruleika
 * Flask byggir á Werkzeug (HTTP og WSGI library fyrir Python) og Jinja1 (Template framework fyrir Python) 
 
+Hvað er Flask Restuful
+* Extension á Flask sem gerir það auðvelt að búa til Rest þjónustur í Flask
 
+Hver er munurinn á Flask og .Net Web Apa
+* ??
+
+Hvað er Curl og hvað gerir það
+* Með Curl er hægt að krafta köll í API og testa þær, hægt að nota Post, Get, Put, Patch ofl.
+* Gamalt og gott Linux tól sem engin fær leið á
+
+Hvernig skrifar maður Flask Restful service, hvernig er uppbyggingin?
+* app.py - er með meðhöndlun á routing og grípur POST, GET etc, skrifar í database eða sækir og renderar html með gögnum
+* db.py - keyrir upp database instance, í þessu tilfelli SQL Alchemy
+* manage.py - er með fall til að búa til gagnagrunn og keyra upp Rest þjónustuna (main fall)
+* models.py - geymir entity klasa og tengingu við database töflur
+* templates - mappa sem geymir öll html skjöl
+
+Hvað er Memcached ?
+* Er caching kerfi sem er hægt að nota fyrir flestar applicationir sem þurfa að geyma gögnin í database
+* Memchace er þá notað til geyma gögn í minni til að forðast það að þrufa að fara í gagnagrunn og þar með hraða fyrirspurnum margfalt
+* Memcache er með risa stóra hash töflu sem hægt er að dreifa á margar vélar, þegar hash taflan er full þá er eldri gögnum ýtt á annað minnissvæði LRU, least recently used.  Forrit sem nota þessa lausn bæta við gögnum og fyrirspurnum í RAM áður en það er farið í gagnagrunn. 
+* Oft er stræð hash töflunar mikil, og getur memchace grunnur farið í mörg GB, Memchace er jafn góð lausn þar sem fyrirspurnatíðni er há eða kostnaður við að sækja gögn er mikill (tími)
 
 
 
