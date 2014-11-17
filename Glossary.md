@@ -289,6 +289,10 @@ OpenId skilar upplýsingum um notenda í form token sem inniheldur scopes og cla
   * The client validates the token and retrieves the user information.
 * Hybrid Flow: This flow is basically a mix of the other two, which means that in some cases the authorization process is return to the client with a code and sometimes with an id token directly.
 
+Á hvaða formati eru Id token
+* JSON Web Token
+
+
 
 
 
