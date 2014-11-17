@@ -412,4 +412,10 @@ Hvað er Sharding í MongoDB
 * Það er leið til að geyma gögn á mörgum serverum
 * Í MongoDB er mjög auðvelt að geyma gögn dreift, 
 
+Hvað er ElasticSearch og hvernig virkar það ?
+* ElasticSearch er leitar server byggður á Lucene, er með öfluga texta leitarvél með RestFul vef viðmóti og schema-free JSON skjölum sem geyma gögnin. 
+* Algent er að nota ES til að replicata gögn sem eru geymd í gagnagrunnum og nota leitarvélina til að leita að gögnum sem eru jafnvel geymt í mismunandi skjölum.
+* ES er býður upp á mjög hraða texta-leitarvél og hefur sitt eigið fyrispurnarmál Query DSL (Domain Specific Language) til að búa til fyrirspurnir 
+* Ef tvö eintök (node) af ES eru sett upp á sama networki þá reyna þau að smeinast, clustring í ES er mjög öflugt. 
+
 
