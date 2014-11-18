@@ -19,7 +19,7 @@ Nefnið 3 algengar gerðir af vefþjónustum og lýsið arkitektúr þeirra stut
 Hver eru einkenni REST þjónustu 
 * Client/Server
 * Stateless - serverinn á að halda utan um client state, state er sent með öllum requestum
-* Cacheable - auðlindir(resources) ákveða sjálfar hvort þær eru cachble og hve lengi
+* Cacheable - auðlindir(resources) ákveða sjálfar hvort þær eru cachable og hve lengi
 * Hypertext driven (í hinum fullkomna heimi)
 
 Teljið upp nokkur HTTP verbs og hvaða tilgangi þau þjóna
@@ -49,18 +49,18 @@ Hvernig er hægt að gera URL óhakkanleg
 
 Hvernig er hægt að skilgreina hversu mikið þjónusta er REST þjónusta
 * Level 0, SOAP, eitt url, allataf gert POST fyrirspurn á SOAP, uppl sendar í requesti um hvaða aðgerð er verið að kalla á
-* Level 1, mismuanndi URL búið að bæta við resource með því
+* Level 1, mismuanndi URL búið að bæta við resource-um með því
 * Level 2, búið að bæta við HTTP verb, Post, Get etc. 
 * Level 3, eitt rótar-url, notendur verða að kalla á þjónustuna til að komast að því hvað er hægt að gera, hér er möguleiki að hafa url sem er óhakkanleg (HATEOAS)
 * Flestar vefþjónustur eru á level 2 í dag
 
 Hvað er HATEOAS
-* REST þjónusta á level 3 sem exposar bara einu rótarurli sem hægt er að nálgast all í gegnum
-* Á þessu stili er janfvel hægt að hafa URL sem ekki er hægt að hakka 
+* REST þjónusta á level 3 sem exposar bara einu rótarurli sem hægt er að nálgast allt í gegnum
+* Á þessu stigi er janfvel hægt að hafa URL sem ekki er hægt að hakka 
 
 Hvernig er best að útgáfustýra API-um
 * Setja útgáfuna í urlið /api/v1/...  mikið notað
-* Clienter bæti vðið custom http header við request sem segir að þeir vilja fá version x, erfitt að prófa með curl eða vafra
+* Clienter bæti við custom http header við request sem segir að þeir vilja fá version x, erfitt að prófa með curl eða vafra
 * Content type, bæta þessu við í Accept http headerinn 
 
 ##ASP.NET Web API
@@ -73,7 +73,7 @@ Hvað heitir nýja web apið sem Microsoft er að vinna að núna
 Hvernig er arkitektúr Web API 
 * Allir controller klasar verða að erfa frá ApiController 
 * ValuController sér um að mappa Urlin í kóðanum, ef föll í controller byjra á Get, Put, Post er gengið út frá því að þau höndli þessi atburði, það er líka hægt að skilgreina með attribute fyrir ofan fallið hvaða verb það höndlar [HttpGet] etc
-* Annars á Soulutin að skiptast upp í Web-Apan sem inniheldur controllera og routing, Models sem inniheldur alla model og view klasa. Servises sem inniheldur alla buisness lógík og Entities sem inniheldur alla Entity klasa og tengingar við gagnagrunn.   Einnig er hægt að hafa Entities í sér projecti.
+* Annars á Soulution að skiptast upp í Web-Apan sem inniheldur controllera og routing, Models sem inniheldur alla model og view klasa. Servise's sem inniheldur alla buisness lógík og Entities sem inniheldur alla Entity klasa og tengingar við gagnagrunn.   Einnig er hægt að hafa Entities í sér projecti.
 
 Hvernig er það stillt hvort controller skili JSON eða XML t.d. 
 * Accept Http Hedar inniheldur Mime type sem segir til um þetta, application/json, applicatoin/xml
@@ -118,13 +118,14 @@ Hvernig er best að hafa högun, uppbyggingu á web service API projecti
 
 ##Unit of Work
 Lýsið hvað unit of work gerir
-* Skilar repositroy fyrir töflu og sér um að commita breytingar í gagnagrunn
+* Geymir lista af Repository-um (töflum)
+* Sér um að commita breytingum á repository-um í gagngrunn
 * Notar IRepository til að ná í töflur í gagnagrunni, eitt repository mappar eina töflu
-* todo 
 
 Lýsið hvað repository gerir
 * Mappar gagnagrunnstöflur í kóða
-* todo
+* Útbýr fyrirspurnir á töflur í gagnagrunni
+* Eyðir, uppfærir, insertar gögnum í töflur
 
 ##Dependency Injection
 Hvað er dependency injection
@@ -217,13 +218,13 @@ Hvernig má gera Web-Apa þannig úr garði að hann styðji við mörg tungumá
 * Magar vefsíður leyfa notanda að velja tungumál, þ.e. yfirskrifa það sem browserinn styður, það er yfirleitt gert með því að setja valið tungumál í köku
 
 Hvað er data annotation og Model state
-* Í Asp.Net er hægt að nota attribute frá System.ComponentModel.DataAnnotations til að validatea Model klasa, það er gert með við því að bæta við [Required(ErrorMessage = "Það vantar að velja ....")]
-* Í Controller klösum er svo hægt að tékka á því hvort ModelState.IsValid sé true, og ef ekki skila þá bad request með villuskilaboðum, ath það skilast ekki sjálfraka villa þó validation klikki það verður að forrita það
+* Í Asp.Net er hægt að nota attribute frá System.ComponentModel.DataAnnotations til að validate-a Model klasa, það er gert með við því að bæta við [Required(ErrorMessage = "Það vantar að velja ....")]
+* Í Controller klösum er svo hægt að tékka á því hvort ModelState.IsValid sé true, og ef ekki skila þá bad request með villuskilaboðum, ath það skilast ekki sjálfkrafa villa þó validation klikki það verður að forrita það
 
 Hvernig má meðhöndla villur sem koma m.a. frá Model state eða af öðrum ástæðum
 * Það má búa til klasa sem erfir ExceptionFilterAttribute eða ActionFilterAttribute, þennan klasa er svo hægt að setja inn í WebApiConfig klasan í Register fallið og þá virkar hann fyrir alla controllera, config.Filters.Add(..
 * Síðan má setja þetta attribute fyrir ofan controller föll: [AddExceptionFilter] og þá virkar filterinn bara á það tiltekna fall, og þá er líka sleppt að bæta exception klasanum við Web-Api config
-* ATH það má bara vera með einn
+* ATH það má bara vera með einn svona klasa að ég held, meikar samt ekki sens
 
 Hvaða 3 leiðir eru í boði til að tengja ExceptionFilter inn í WebApi
 * By action, fyrir ofan controller föll: [AppExceptionFilter] 
@@ -239,7 +240,7 @@ Hvernig má kasta HTTP villum með ákv. error kóða
 
 Hvað villur ná ExceptionFilters ekki að höndla 
 * Exceptions sem koma frá smiðum controllera
-* Exceptions sem koma fra message handlers
+* Exceptions sem koma frá message handlers
 * Exceptions sem koma v. routing
 * Exceptions sem koma þegar það er verið að serializa response content 
 
@@ -274,7 +275,7 @@ Hvaða breytingar eru í OAuth 1.0
 * Hér kemur til sögunar resource owner, þ.e. auðkenningar-þjónusta.   Clientin þarf því að biðja um aðgang að gögnum í gegnum þennan resource þjón, fær til baka token og matching shared-secret sem hann getur svo notað til að nálgast upplýsingar.  Markmiðið með þessu er að þurfa ekki að senda notenda-upplýsingar á clientin, hægt er að gefa út tóka sem hafa ákveðin gildistíma og takmarkaðar aðgangsheimildir 
 
 Hvaða kemur svo nýtt í OAuth 2.0
-* Þetta er víst gölluð útgáfa og ekki mælt með að nota hana
+* Þetta er víst gölluð útgáfa og ekki mælt með að nota hana, Facebook, Google og fleiri eru búnir að klæðskerasauma þetta að sínum þörfum svo staðalinn er orðin ónothæfur. 
 
 Hver er munurinn á OAuth og OpenId
 * OAuth skilgreinir access toka sem gefa aðgang að providerum, OpenId býr til identity toka sem eru bara til þess að auðkenna notedur og þessir tókar eru notaðir til að fá aðgang að clientum
@@ -410,7 +411,7 @@ Hvað er MongoDB?
 * MongoDB styður Indexa og er hægt að indexa collection á ákv. field
 * MongoDB úthlutar einnig Id á colleciton er það field sett sjálfkrafa inn með öllum gögnum sem eru skráð
 * MongoDB leyfir ekki að sama id í collection sé vistað tvisvar
-* 
+* MongoDB býður einnig upp á Replication á milli grunna
 
 Hvað er Sharding í MongoDB
 * Það er leið til að geyma gögn á mörgum serverum
@@ -419,7 +420,7 @@ Hvað er Sharding í MongoDB
 ##SqlAlchemy
 Hvað er SqlAlchemy
 * SQL gagnagrunnur fyrir Python
-* 
+* Hefur það markmið að gera SQL einfalt og skiljanlegt, hægt að búa til töflur í kóða og keyra í grunnin t.d. 
 
 ##ElasticSearch
 Hvað er ElasticSearch og hvernig virkar það ?
