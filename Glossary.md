@@ -355,6 +355,7 @@ Hvað er PIP?
 * pip Freeze > requierments.txt, skrifar dependency's í skrá sem svo er hægt að nota til að installa forritinu seinna meir
 * pip install -r requierments.txt, setur upp allt sem er í þessari skrá
 
+##Flask
 Hvað er Flask
 * Það er lightweight web framework fyrir Python, 
 * Flask er svokallað micro framework, góður kjarni, routing, meðhöndlun á HTTP protocol, og auðvelt að bæta við extensionum
@@ -379,12 +380,14 @@ Hvernig skrifar maður Flask Restful service, hvernig er uppbyggingin?
 * models.py - geymir entity klasa og tengingu við database töflur
 * templates - mappa sem geymir öll html skjöl
 
+##Memcached
 Hvað er Memcached ?
 * Er caching kerfi sem er hægt að nota fyrir flest forrit sem þurfa að geyma og sækja gögn í database
 * Memchace er þá notað til geyma gögn í minni til að forðast það að þurfa að fara í gagnagrunn og þar með hraða fyrirspurnum margfalt
 * Memcache er með risa stóra hash töflu sem hægt er að dreifa á margar vélar, þegar hash taflan er full þá er eldri gögnum ýtt á annað minnissvæði LRU, least recently used.  Forrit sem nota þessa lausn bæta við gögnum og fyrirspurnum í RAM áður en það er skráð í gagnagrunn. 
 * Oft er stræð hash töflunar mikil, og getur memchace grunnur farið í mörg GB, Memchace er jafn góð lausn þar sem fyrirspurnatíðni er há eða kostnaður við að sækja gögn er mikill (tími)
 
+##Node.js
 Hvað er Node.js?
 * Þetta er open source, cross-platform umhverfi fyrir service forrit og vef þjóna.    Node.js er skrifað í JavaScript, og er keyrt með Node.js runtime.  
 * Node.js is single threaded and asynchronous
@@ -395,6 +398,7 @@ Hvað er Node.js?
 Ef Node.js er single threaded hvernig höndlar það þá margar fyrirspurnir ?
 * The first client connects and asks for data from the database. Nodejs sends a request to the database and while it waits for the response from the database it handles other clients requests. When the database is finished getting the data and sends the response back to nodejs. Nodejs gets an interrupt signal, receives the data and gives it to the first client that connected and was asking for this data.
 
+##MongoDB
 Hvað er MongoDB?
 * NpSql database, gögn eru geymd í skrám (document based db)
 * Gögn eru geymd í collection, gögn eru geymd á JSON like formati, e.g. binary json string kallað BISON.
@@ -412,6 +416,7 @@ Hvað er Sharding í MongoDB
 * Það er leið til að geyma gögn á mörgum serverum
 * Í MongoDB er mjög auðvelt að geyma gögn dreift, 
 
+##ElasticSearch
 Hvað er ElasticSearch og hvernig virkar það ?
 * ElasticSearch er leitar server byggður á Lucene, er með öfluga texta leitarvél með RestFul vef viðmóti og schema-free JSON skjölum sem geyma gögnin. 
 * Algent er að nota ES til að replicata gögn sem eru geymd í gagnagrunnum og nota leitarvélina til að leita að gögnum sem eru jafnvel geymt í mismunandi skjölum.
