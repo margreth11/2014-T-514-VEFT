@@ -428,4 +428,9 @@ Hvað er ElasticSearch og hvernig virkar það ?
 * ES er býður upp á mjög hraða texta-leitarvél og hefur sitt eigið fyrispurnarmál Query DSL (Domain Specific Language) til að búa til fyrirspurnir 
 * Ef tvö eintök (node) af ES eru sett upp á sama networki þá reyna þau að smeinast, clustring í ES er mjög öflugt. 
 
-
+##RabbitMQ
+Hvað er þetta tól og hvað gerir það, nefnið dæmi þar sem gott væri að nota þetta
+* Með RMQ er hægt að senda skilaboð á milli forrita
+* Forritin þurfa ekki að vera skrifuð á sama forritunarmáli
+* RMQ útfærir skilaboðaröð sem gerir forritun kleyft að tala saman asynchronously, þ.e. eitt forrit þarf ekki að bíða eftir að annað klári
+* T.d. pöntunarkerfi, notandi skráir pöntun á vefsíðu, pöntunin fer í biðröð, fyrst þarf að tékka hvort varan er til, og ef hún er til þá eru skilaboð send á client og þar er borgað, þegar því er lokðþarf að prenta út pöntunina þannig að vöruhúsið geti sent hana.  Einnig þarf sölu og markaðstólið að vita af þessari pöntun of janfvel fleiri kerfi.  Það væri ekki gott ef notandi, client forrit þyrfti að bíða eftir að það myndi gerast.  
