@@ -16,7 +16,7 @@ Nefnið 3 algengar gerðir af vefþjónustum og lýsið arkitektúr þeirra stut
 * SOAP (Simple Object Access protocol)
 * WCF (Windows Communication Foundation)
 
-Hver eru einkenni REST þjónutu 
+Hver eru einkenni REST þjónustu 
 * Client/Server
 * Stateless - serverinn á að halda utan um client state, state er sent með öllum requestum
 * Cacheable - auðlindir(resources) ákveða sjálfar hvort þær eru cachble og hve lengi
