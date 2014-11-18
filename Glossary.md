@@ -144,10 +144,10 @@ Hvað þarf til svo að þessi fyrirspurn skili okkur gögnum, var result = _cou
 * Það þarf að kalla á ToList(), result hér er bara query object (IEnumerable) ekki gögnin sjálf
 
 Hvaða föll má nota til að ná í eina röð í færslur eða query objecti
-* First(), skilar fyrstu röð, kastar villur ef engin gögn eru til staðar
-* FirstOrDefault(), skilar fyrstu röð eða null ef engin gögn eru til staðar
-* Single(), skilar fyrstu röð, kastar villu ef engin gögn eða fleiri en ein röð uppfylla leitarskilyrði
-* SingleOrDefult(), skilar fyrstu röð eða null ef engin gögn, kastar villu ef engin gögn eða ef það eru fleiri ein ein röð sem uppfylla leitarskilyrði
+* First(), skilar fyrstu röð úr collection, kastar villu ef collection er tómt
+* FirstOrDefault(), skilar fyrstu röð úr collection eða null ef collection er tómt
+* Single(), skilar fyrstu röð úr collection, kastar villu ef collection er tómt eða ef fleiri en ein færsla finnast skv. leitarskilyrðum
+* SingleOrDefult(), skilar fyrstu röð úr collection eða null ef collection er tómt, kastar villu ef fleiri en ein færsla finnast skv. leitarskilyrðum
 
 Hvernig join-ar maður tvær töflur í linq
 * með equals, join ct in _courseTemplates.All() on ci.CourseID equals ct.ID
