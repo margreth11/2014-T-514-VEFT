@@ -416,6 +416,11 @@ Hvað er Sharding í MongoDB
 * Það er leið til að geyma gögn á mörgum serverum
 * Í MongoDB er mjög auðvelt að geyma gögn dreift, 
 
+##SqlAlchemy
+Hvað er SqlAlchemy
+* SQL gagnagrunnur fyrir Python
+* 
+
 ##ElasticSearch
 Hvað er ElasticSearch og hvernig virkar það ?
 * ElasticSearch er leitar server byggður á Lucene, er með öfluga texta leitarvél með RestFul vef viðmóti og schema-free JSON skjölum sem geyma gögnin. 
