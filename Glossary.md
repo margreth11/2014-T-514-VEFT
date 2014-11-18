@@ -174,7 +174,7 @@ Hvað gerir AutoMapper
 * Hann sér um að mappa klösum, þ.e. mappa Entity klösum í Dto og vice versa
 
 Hvað er Fluent API og hvað gerir það
-* Þetta gerir okkur kleyft að mappa töflum í gagnagrunni yfir í entity klasa og breyta nöfnum á bæði töflunni og dálkum. Þetta er gott í þeim tilfellum þar sem við erum kannski með legacy grunn með nafnagiftum sem ekki passa við það sem við viljum hafa í dag.  Gert með því að setja Attribute fyrir ofan klasaskilgreiningu á Entity klasa [TableName = "People"]
+* Þetta gerir okkur kleyft að mappa töflum í gagnagrunni yfir í entity klasa og breyta nöfnum á bæði töflunni og dálkum. Þetta er gott í þeim tilfellum þar sem við erum kannski með legacy grunn með nafnagiftum sem ekki passa við það sem við viljum hafa í dag.  
 
 ##Unit Tests
 Hvaða kóða á fyrst og fremst að einingaprófa 
