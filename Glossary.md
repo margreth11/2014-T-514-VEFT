@@ -50,7 +50,7 @@ Hvernig er hægt að gera URL óhakkanleg
 Hvernig er hægt að skilgreina hversu mikið þjónusta er REST þjónusta
 * Level 0, SOAP, eitt url, alltaf gert POST fyrirspurn, uppl sendar í requesti um hvaða aðgerð er verið að kalla á
 * Level 1, mismuanndi URL búið að bæta við resource-um með því
-* Level 2, búið að bæta við HTTP verb, Post, Get etc. 
+* Level 2, búið að bæta við HTTP verb, Post, Get etc. í staðinn fyrir að hafa verb-in í urlinu
 * Level 3, eitt rótar-url, notendur verða að kalla á þjónustuna til að komast að því hvað er hægt að gera, hér er möguleiki að hafa url sem er óhakkanleg (HATEOAS)
 * Flestar vefþjónustur eru á level 2 í dag
 
