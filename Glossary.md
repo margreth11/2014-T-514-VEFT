@@ -226,8 +226,8 @@ Hvernig má meðhöndla villur sem koma m.a. frá Model state eða af öðrum á
 * ATH það má bara vera með einn
 
 Hvaða 3 leiðir eru í boði til að tengja ExceptionFilter inn í WebApi
-* By action, fyrir ofan controller föll: [AddExceptionFilter] 
-* By controller, fyrir ofan controller klasa: [AddExceptionFilter]
+* By action, fyrir ofan controller föll: [AppExceptionFilter] 
+* By controller, fyrir ofan controller klasa: [AppExceptionFilter]
 * Globally, bæta við í Web-Api config
 
 Hvernig má kasta villum á mismunandi tungumálum
